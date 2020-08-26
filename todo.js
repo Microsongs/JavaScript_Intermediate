@@ -6,7 +6,20 @@ const toDoForm = document.querySelector(".js-toDoForm"),
 // dd
 const TODOS_LS = "toDos";
 
-const toDos = [];
+let toDos = [];
+
+// toDO의 html을 지우는 함수
+function deleteToDo(event){
+    // event.target = button이고 그것의 parentNode는 li
+    const btn = event.target;
+    const li = btn.parentNode;
+    // child 노드를 삭제
+    toDoList.removeChild(li);
+    // filter로 toDo.id가 true인 값만 다시 toDos에 넣는다. -> 지워진 노드를 toDos에서 삭제
+    const cleanToDos = toDos.filter((toDo) => toDo.id !== parseInt(li.id));
+    toDos = cleanToDos;
+    saveToDos();
+}
 
 function saveToDos(){
     // js의 localStorage는 전부 string으로 저장하려고 하므로 JSON.stringify로 object를 string화
@@ -22,6 +35,7 @@ function paintToDo(text){
     const newId = toDos.length + 1;
 
     delBtn.innerHTML= "✘";
+    delBtn.addEventListener("click",deleteToDo);
     span.innerText = text;
     // father element를 넣는 것
     li.appendChild(delBtn);
