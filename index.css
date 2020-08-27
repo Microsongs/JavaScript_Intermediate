@@ -42,3 +42,11 @@ body{
     z-index: -1;
     animation: fadeIn 0.5s linear;
 }
+
+.js-clock,
+.js-form,
+.js-toDoList,
+.js-weather,
+.js-greetings{
+    color:white;
+}
