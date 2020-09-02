@@ -1,3 +1,4 @@
+
 function three(){
     console.log("I love Js");
     throw error("omg");
@@ -14,3 +15,11 @@ function zero(){
 }
 
 zero();
+
+function hello(){
+    bye();
+}
+function bye(){
+    hello();
+}
+hello();
